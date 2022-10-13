@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fwc_album_app/app/core/styles/button_styles.dart';
-import 'package:fwc_album_app/app/core/styles/colors_app.dart';
-import 'package:fwc_album_app/app/core/styles/text_styles.dart';
+import 'package:fwc_album_app/app/core/ui/styles/button_styles.dart';
+import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
+import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
+import 'package:fwc_album_app/app/core/ui/widgets/button.dart';
+import 'package:fwc_album_app/app/core/ui/widgets/rounded_button.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -17,26 +19,18 @@ class SplashPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
+            Button(
+              style: context.buttonStyles.primaryButton,
+              labelStyle: context.textStyles.textPrimaryFontBold,
+              label: 'Salvar',
               onPressed: () {},
-              style: ButtonStyles.i.yellowButton,
-              child: const Text('Salvar'),
             ),
-            ElevatedButton(
+            Button.primary(
+              label: 'Coiso',
               onPressed: () {},
-              style: ButtonStyles.i.primaryButton,
-              child: const Text('Salvar'),
+              width: MediaQuery.of(context).size.width * .9,
             ),
-            OutlinedButton(
-              onPressed: () {},
-              style: ButtonStyles.i.yellowOutlinedButton,
-              child: const Text('Salvar'),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              style: ButtonStyles.i.primaryOutlinedButton,
-              child: const Text('Salvar'),
-            ),
+            RoundedButton(icon: Icons.add, onPressed: (){}),
             const TextField(),
           ],
         ),
