@@ -55,6 +55,11 @@ class TextStyles {
 
   TextStyle get textSecondaryFontMedium =>
       TextStyle(fontWeight: FontWeight.w500, fontFamily: secondaryFont);
+
+  TextStyle get titleBlack => textPrimaryFontBold.copyWith(
+        fontSize: 22,
+        color: Colors.black,
+      );
 }
 
 extension TextStylesExtensions on BuildContext {
