@@ -23,11 +23,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> register(RegisterUserModel registerModel) async {
+  Future<void> register(RegisterUserModel registerUserModel) async {
     try {
       await dio.unAuth().post(
             '/api/register',
-            data: registerModel.toMap(),
+            data: registerUserModel.toMap(),
           );
     } on DioError catch (e, s) {
       log('Erro ao registrar o usuário', error: e, stackTrace: s);
