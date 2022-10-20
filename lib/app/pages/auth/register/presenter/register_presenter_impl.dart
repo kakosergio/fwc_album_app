@@ -34,5 +34,5 @@ class RegisterPresenterImpl implements RegisterPresenter {
   }
 
   @override
-  set view(view) => view = _view;
+  set view(RegisterView view) => _view = view;
 }

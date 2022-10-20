@@ -10,8 +10,8 @@ abstract class RegisterViewImpl extends State<RegisterPage>
     implements RegisterView {
   @override
   void initState() {
-    widget.presenter.view = this;
     super.initState();
+    widget.presenter.view = this;
   }
 
   @override
