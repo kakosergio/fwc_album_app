@@ -15,7 +15,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends RegisterViewImpl {
-  
   final formKey = GlobalKey<FormState>();
   final nameEC = TextEditingController();
   final emailEC = TextEditingController();
@@ -125,6 +124,7 @@ class _RegisterPageState extends RegisterViewImpl {
                         var formValid =
                             formKey.currentState?.validate() ?? false;
                         if (formValid) {
+                          showLoader();
                           widget.presenter.register(
                               name: nameEC.text,
                               email: emailEC.text,
