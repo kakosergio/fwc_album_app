@@ -10,23 +10,26 @@ import 'package:fwc_album_app/app/repository/auth/auth_repository.dart';
 import 'package:fwc_album_app/app/repository/auth/auth_repository_impl.dart';
 
 class FwcAlbumApp extends StatelessWidget {
-  const FwcAlbumApp({Key? key}) : super(key: key);
+  final navigatorKey = GlobalKey<NavigatorState>();
+  FwcAlbumApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FlutterGetItApplicationBinding(bindingsBuilder: () => [
-      Bind.lazySingleton<CustomDio>((i) => CustomDio()),
-      Bind.lazySingleton<AuthRepository>((i) => AuthRepositoryImpl(dio: i())),
-    ],
+    return FlutterGetItApplicationBinding(
+      bindingsBuilder: () => [
+        Bind.lazySingleton<CustomDio>((i) => CustomDio()),
+        Bind.lazySingleton<AuthRepository>((i) => AuthRepositoryImpl(dio: i())),
+      ],
       child: MaterialApp(
         title: 'Fifa World Cup Album',
         debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
         theme: ThemeConfig.theme,
         routes: {
-          '/':(_) => const SplashRoute(),
-          '/home':(_) => const HomePage(),
-          '/auth/login':(_) => const LoginRoute(),
-          '/auth/register':(_) => const RegisterRoute(),
+          '/': (_) => const SplashRoute(),
+          '/home': (_) => const HomePage(),
+          '/auth/login': (_) => const LoginRoute(),
+          '/auth/register': (_) => const RegisterRoute(),
         },
       ),
     );
