@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:fwc_album_app/app/core/rest/custom_dio.dart';
+import 'package:fwc_album_app/app/core/ui/global/global_context.dart';
+import 'package:fwc_album_app/app/core/ui/global/global_context_impl.dart';
 import 'package:fwc_album_app/app/core/ui/theme/theme_config.dart';
 import 'package:fwc_album_app/app/pages/auth/login/login_route.dart';
 import 'package:fwc_album_app/app/pages/auth/register/register_route.dart';
@@ -19,6 +21,8 @@ class FwcAlbumApp extends StatelessWidget {
       bindingsBuilder: () => [
         Bind.lazySingleton<CustomDio>((i) => CustomDio()),
         Bind.lazySingleton<AuthRepository>((i) => AuthRepositoryImpl(dio: i())),
+        Bind.lazySingleton<GlobalContext>((i) =>
+            GlobalContextImpl(navigatorKey: navigatorKey, authRepository: i())),
       ],
       child: MaterialApp(
         title: 'Fifa World Cup Album',
