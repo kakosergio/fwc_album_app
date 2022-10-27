@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getit/flutter_getit.dart';
+
 import 'package:fwc_album_app/app/core/ui/styles/button_styles.dart';
 import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/button.dart';
+import 'package:fwc_album_app/app/pages/home/presenter/home_presenter.dart';
+import 'package:fwc_album_app/app/pages/home/view/home_view.dart';
+import 'package:fwc_album_app/app/pages/home/view/home_view_impl.dart';
 import 'package:fwc_album_app/app/pages/home/widgets/status_tile.dart';
+import 'package:fwc_album_app/app/pages/home/widgets/sticker_percent.dart';
 
-import '../../core/rest/custom_dio.dart';
+class HomePage extends StatefulWidget {
+  final HomePresenter presenter;
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends HomeViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +60,7 @@ class HomePage extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    Text('Percent!!!'),
+                    const StickerPercent(percent: 45),
                     const SizedBox(
                       height: 20,
                     ),
@@ -84,9 +96,9 @@ class HomePage extends StatelessWidget {
                       height: 20,
                     ),
                     Button(
-                      outline: true,
-                      width: MediaQuery.of(context).size.width * .9,
-                      onPressed: (){},
+                        outline: true,
+                        width: MediaQuery.of(context).size.width * .9,
+                        onPressed: () {},
                         style: context.buttonStyles.yellowOutlinedButton,
                         labelStyle: context
                             .textStyles.textSecondaryFontExtraBold
