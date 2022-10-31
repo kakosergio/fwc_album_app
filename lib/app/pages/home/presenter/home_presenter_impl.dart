@@ -1,5 +1,6 @@
 import 'package:fwc_album_app/app/pages/home/view/home_view.dart';
 import 'package:fwc_album_app/app/repository/user/user_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import './home_presenter.dart';
 
@@ -12,6 +13,7 @@ class HomePresenterImpl implements HomePresenter {
   @override
   Future<void> getUserData() async {
     try {
+      _view.showLoader();
       final user = await userRepository.getMe();
       _view.updateUser(user);
     } catch (e) {
@@ -20,9 +22,11 @@ class HomePresenterImpl implements HomePresenter {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<void> logout() async {
+    _view.showLoader();
+    final sp = await SharedPreferences.getInstance();
+    sp.clear();
+    _view.logoutSuccess();
   }
 
   @override

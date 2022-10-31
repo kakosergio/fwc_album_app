@@ -32,7 +32,7 @@ class _HomePageState extends HomeViewImpl {
         backgroundColor: context.colors.primary,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () => widget.presenter.logout(),
               icon: const Icon(
                 Icons.logout,
                 color: Colors.white,
@@ -60,12 +60,12 @@ class _HomePageState extends HomeViewImpl {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    const StickerPercent(percent: 45),
+                    StickerPercent(percent: user?.totalCompletePercent ?? 0),
                     const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      '45 figurinhas',
+                      '${user?.totalStickers ?? 0} figurinhas',
                       style: context.textStyles.titleWhite,
                     ),
                     const SizedBox(
@@ -74,7 +74,7 @@ class _HomePageState extends HomeViewImpl {
                     StatusTile(
                       icon: Image.asset('assets/images/all_icon.png'),
                       label: 'Todas',
-                      value: 34,
+                      value: user?.totalAlbum ?? 0,
                     ),
                     const SizedBox(
                       height: 20,
@@ -82,7 +82,7 @@ class _HomePageState extends HomeViewImpl {
                     StatusTile(
                       icon: Image.asset('assets/images/missing_icon.png'),
                       label: 'Faltando',
-                      value: 500,
+                      value: user?.totalComplete ?? 0,
                     ),
                     const SizedBox(
                       height: 20,
@@ -90,7 +90,7 @@ class _HomePageState extends HomeViewImpl {
                     StatusTile(
                       icon: Image.asset('assets/images/repeated_icon.png'),
                       label: 'Repetidas',
-                      value: 30,
+                      value: user?.totalDuplicates ?? 0,
                     ),
                     const SizedBox(
                       height: 20,
@@ -98,7 +98,7 @@ class _HomePageState extends HomeViewImpl {
                     Button(
                         outline: true,
                         width: MediaQuery.of(context).size.width * .9,
-                        onPressed: () {},
+                        onPressed: () => Navigator.of(context).pushNamed('/my_stickers'),
                         style: context.buttonStyles.yellowOutlinedButton,
                         labelStyle: context
                             .textStyles.textSecondaryFontExtraBold

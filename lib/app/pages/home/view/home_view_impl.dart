@@ -9,6 +9,8 @@ import './home_view.dart';
 abstract class HomeViewImpl extends State<HomePage>
     with Loader<HomePage>, Messages<HomePage>
     implements HomeView {
+  UserModel? user;
+
   @override
   void initState() {
     widget.presenter.view = this;
@@ -20,16 +22,23 @@ abstract class HomeViewImpl extends State<HomePage>
 
   @override
   void error(String message) {
-    // TODO: implement error
+    hideLoader();
+    showError(message);
   }
 
   @override
   void logoutSuccess() {
-    // TODO: implement logoutSuccess
+    hideLoader();
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/auth/login', (route) => false);
+    showSuccess('Logout realizado com sucesso');
   }
 
   @override
   void updateUser(UserModel user) {
-    // TODO: implement updateUser
+    hideLoader();
+    setState(() {
+      this.user = user;
+    });
   }
 }
