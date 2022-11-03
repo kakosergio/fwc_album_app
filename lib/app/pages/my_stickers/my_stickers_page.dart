@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/widgets/sticker_group.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/widgets/sticker_group_filter.dart';
 
 import 'widgets/sticker_status_filter.dart';
 
 class MyStickersPage extends StatelessWidget {
-
-
   const MyStickersPage({super.key});
 
   @override
@@ -18,12 +18,18 @@ class MyStickersPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: const [
-                //Status
-                StickerStatusFilter(filterSelected: '',),
-                //Filtro
+                StickerStatusFilter(
+                  filterSelected: '',
+                ),
+                StickerGroupFilter(),
               ],
             ),
-          )
+          ),
+          SliverList(delegate: SliverChildBuilderDelegate(childCount: 10,
+            (context, index) {
+              return const StickerGroup();
+            },
+          ))
         ],
       ),
     );
