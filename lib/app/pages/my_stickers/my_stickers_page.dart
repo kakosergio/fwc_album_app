@@ -25,7 +25,7 @@ class MyStickersPage extends StatelessWidget {
               ],
             ),
           ),
-          SliverList(delegate: SliverChildBuilderDelegate(childCount: 10,
+          SliverList(delegate: SliverChildBuilderDelegate(childCount: 1,
             (context, index) {
               return const StickerGroup();
             },
