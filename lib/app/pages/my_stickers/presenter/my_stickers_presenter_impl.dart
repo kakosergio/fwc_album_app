@@ -6,9 +6,10 @@ import './my_stickers_presenter.dart';
 
 class MyStickersPresenterImpl implements MyStickersPresenter {
   final StickersRepository stickersRepository;
-  var album = <GroupStickers>[];
-
   late final MyStickersView _view;
+
+  var album = <GroupStickers>[];
+  var statusSelected = 'all';
 
   MyStickersPresenterImpl({required this.stickersRepository});
 
@@ -20,4 +21,10 @@ class MyStickersPresenterImpl implements MyStickersPresenter {
 
   @override
   set view(MyStickersView view) => _view = view;
+
+  @override
+  Future<void> statusFilter(String status) async {
+    statusSelected = status;
+    _view.updateStatusFilter(status);
+  }
 }

@@ -16,6 +16,7 @@ abstract class MyStickersViewImpl extends State<MyStickersPage>
   void initState() {
     widget.presenter.view = this;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      showLoader();
       widget.presenter.getMyAlbum();
     });
     super.initState();
@@ -26,8 +27,16 @@ abstract class MyStickersViewImpl extends State<MyStickersPage>
 
   @override
   void loadedPage(List<GroupStickers> album) {
+    hideLoader();
     setState(() {
       this.album = album;
+    });
+  }
+
+  @override
+  void updateStatusFilter(status) {
+    setState(() {
+      statusFilter = status;
     });
   }
 }

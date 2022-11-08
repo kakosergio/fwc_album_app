@@ -38,7 +38,7 @@ class _MyStickersPageState extends MyStickersViewImpl {
             childCount: album.length,
             (context, index) {
               final group = album[index];
-              return StickerGroup(group: group);
+              return StickerGroup(group: group, statusFilter: statusFilter,);
             },
           ))
         ],
