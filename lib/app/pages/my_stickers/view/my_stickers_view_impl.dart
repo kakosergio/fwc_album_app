@@ -10,6 +10,7 @@ abstract class MyStickersViewImpl extends State<MyStickersPage>
     with Loader<MyStickersPage>, Messages<MyStickersPage>
     implements MyStickersView {
   var album = <GroupStickers>[];
+  var statusFilter = 'all';
 
   @override
   void initState() {

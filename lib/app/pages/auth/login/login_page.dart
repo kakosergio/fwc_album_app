@@ -25,11 +25,13 @@ class _LoginPageState extends LoginViewImpl {
 
   final _emailEC = TextEditingController();
   final _passwordEC = TextEditingController();
+  final _focusNode = FocusNode();
 
   @override
   void dispose() {
     _emailEC.dispose();
     _passwordEC.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -70,6 +72,8 @@ class _LoginPageState extends LoginViewImpl {
                         ),
                       ),
                       TextFormField(
+                        onFieldSubmitted: (value) => _focusNode.requestFocus(),
+                        autofocus: true,
                         controller: _emailEC,
                         validator: Validatorless.multiple([
                           Validatorless.email('Insira um e-mail válido'),
@@ -84,6 +88,17 @@ class _LoginPageState extends LoginViewImpl {
                         height: 20,
                       ),
                       TextFormField(
+                        onFieldSubmitted: (value) async {
+                          var formValid =
+                              _formKey.currentState?.validate() ?? false;
+
+                          if (formValid) {
+                            showLoader();
+                            await widget.presenter
+                                .login(_emailEC.text, _passwordEC.text);
+                          }
+                        },
+                        focusNode: _focusNode,
                         controller: _passwordEC,
                         validator: Validatorless.multiple([
                           Validatorless.required('Senha obrigatória'),

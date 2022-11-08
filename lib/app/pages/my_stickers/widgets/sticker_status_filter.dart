@@ -25,20 +25,20 @@ class StickerStatusFilter extends StatelessWidget {
           Button(
               width: context.width * .3,
               onPressed: () {},
-              style: context.buttonStyles.yellowButton,
+              style: filterSelected == 'all' ? context.buttonStyles.yellowButton : context.buttonStyles.primaryButton,
               labelStyle: context.textStyles.textSecondaryFontMedium
                   .copyWith(color: context.colors.primary),
               label: 'Todas'),
           Button(
               width: context.width * .3,
               onPressed: () {},
-              style: context.buttonStyles.primaryButton,
+              style: filterSelected == 'missing' ? context.buttonStyles.yellowButton : context.buttonStyles.primaryButton,
               labelStyle: context.textStyles.textSecondaryFontMedium,
               label: 'Faltando'),
           Button(
               width: context.width * .3,
               onPressed: () {},
-              style: context.buttonStyles.primaryButton,
+              style: filterSelected == 'duplicates' ? context.buttonStyles.yellowButton : context.buttonStyles.primaryButton,
               labelStyle: context.textStyles.textSecondaryFontMedium,
               label: 'Repetidas'),
         ],

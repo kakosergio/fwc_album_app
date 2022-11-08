@@ -25,11 +25,11 @@ class _MyStickersPageState extends MyStickersViewImpl {
         slivers: [
           SliverToBoxAdapter(
             child: Column(
-              children: const [
+              children: [
                 StickerStatusFilter(
-                  filterSelected: '',
+                  filterSelected: statusFilter,
                 ),
-                StickerGroupFilter(),
+                const StickerGroupFilter(),
               ],
             ),
           ),
