@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+
 import 'package:fwc_album_app/app/core/ui/sizes/context_sizes.dart';
 import 'package:fwc_album_app/app/core/ui/styles/button_styles.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/button.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/rounded_button.dart';
+import 'package:fwc_album_app/app/pages/sticker_detail/presenter/sticker_detail_presenter.dart';
+import 'package:fwc_album_app/app/pages/sticker_detail/view/sticker_detail_view_impl.dart';
 
 class StickerDetailPage extends StatefulWidget {
-  const StickerDetailPage({super.key});
+  final StickerDetailPresenter presenter;
+  const StickerDetailPage({
+    Key? key,
+    required this.presenter,
+  }) : super(key: key);
 
   @override
   State<StickerDetailPage> createState() => _StickerDetailPageState();
 }
 
-class _StickerDetailPageState extends State<StickerDetailPage> {
+class _StickerDetailPageState extends StickerDetailViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +32,7 @@ class _StickerDetailPageState extends State<StickerDetailPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/images/sticker_pb.png'),
+              Image.asset(hasSticker ? 'assets/images/sticker.png' : 'assets/images/sticker_pb.png'),
               Row(
                 children: [
                   Padding(
@@ -68,7 +75,8 @@ class _StickerDetailPageState extends State<StickerDetailPage> {
               ),
               Button(
                 style: context.buttonStyles.primaryOutlinedButton,
-                labelStyle: context.textStyles.textSecondaryFontExtraBoldPrimaryColor,
+                labelStyle:
+                    context.textStyles.textSecondaryFontExtraBoldPrimaryColor,
                 label: 'Excluir Figurinha',
                 outline: true,
                 width: context.width * .9,
