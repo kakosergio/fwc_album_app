@@ -5,7 +5,6 @@ import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/button.dart';
 import 'package:fwc_album_app/app/pages/home/presenter/home_presenter.dart';
-import 'package:fwc_album_app/app/pages/home/view/home_view.dart';
 import 'package:fwc_album_app/app/pages/home/view/home_view_impl.dart';
 import 'package:fwc_album_app/app/pages/home/widgets/status_tile.dart';
 import 'package:fwc_album_app/app/pages/home/widgets/sticker_percent.dart';
