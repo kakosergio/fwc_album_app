@@ -38,7 +38,7 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      'BRA 17',
+                      '$countryCode $stickerNumber',
                       style: context.textStyles.textPrimaryFontBold
                           .copyWith(fontSize: 22),
                     ),
@@ -51,7 +51,7 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Text(
-                      '1',
+                      '$amount',
                       style: context.textStyles.textSecondaryFontMedium,
                     ),
                   ),
@@ -65,7 +65,7 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                   padding: const EdgeInsets.only(left: 15, bottom: 10),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Brasil',
+                    countryName,
                     style: context.textStyles.textPrimaryFontRegular,
                   )),
               Button.primary(
