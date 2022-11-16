@@ -1,11 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:fwc_album_app/app/core/ui/sizes/context_sizes.dart';
 import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/models/group_stickers.dart';
 import 'package:fwc_album_app/app/models/user_sticker_model.dart';
+import 'package:fwc_album_app/app/pages/my_stickers/presenter/my_stickers_presenter.dart';
 
 class StickerGroup extends StatelessWidget {
   final GroupStickers group;
@@ -108,13 +110,16 @@ class Sticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed('/sticker_detail', arguments: {
-        'countryCode': countryCode,
-        'stickerNumber': stickerNumber,
-        'countryName': countryName,
-        'stickerUser': sticker
-      }),
+      onTap: () async {
+        final presenter = context.get<MyStickersPresenter>();
+        await Navigator.of(context).pushNamed('/sticker_detail', arguments: {
+          'countryCode': countryCode,
+          'stickerNumber': stickerNumber,
+          'countryName': countryName,
+          'stickerUser': sticker
+        });
+        presenter.refresh();
+      },
       child: Container(
         color: sticker != null ? context.colors.primary : context.colors.grey,
         child: Column(

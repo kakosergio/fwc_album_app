@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fwc_album_app/app/core/ui/sizes/context_sizes.dart';
 import 'package:fwc_album_app/app/core/ui/styles/button_styles.dart';
+import 'package:fwc_album_app/app/core/ui/styles/colors_app.dart';
 import 'package:fwc_album_app/app/core/ui/styles/text_styles.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/button.dart';
 import 'package:fwc_album_app/app/core/ui/widgets/rounded_button.dart';
@@ -32,7 +33,9 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(hasSticker ? 'assets/images/sticker.png' : 'assets/images/sticker_pb.png'),
+              Image.asset(hasSticker
+                  ? 'assets/images/sticker.png'
+                  : 'assets/images/sticker_pb.png'),
               Row(
                 children: [
                   Padding(
@@ -45,9 +48,8 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                   ),
                   const Spacer(),
                   RoundedButton(
-                    icon: Icons.remove,
-                    onPressed: () {},
-                  ),
+                      icon: Icons.remove,
+                      onPressed: widget.presenter.decrementAmount),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Text(
@@ -56,9 +58,8 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                     ),
                   ),
                   RoundedButton(
-                    icon: Icons.add,
-                    onPressed: () {},
-                  ),
+                      icon: Icons.add,
+                      onPressed: widget.presenter.incrementAmount),
                 ],
               ),
               Container(
@@ -69,8 +70,8 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                     style: context.textStyles.textPrimaryFontRegular,
                   )),
               Button.primary(
-                label: 'Adicionar Figurinha',
-                onPressed: () {},
+                label: '${hasSticker ? 'Atualizar' : 'Adicionar'} figurinha',
+                onPressed: widget.presenter.saveSticker,
                 width: context.width * .9,
               ),
               Button(
@@ -80,7 +81,26 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                 label: 'Excluir Figurinha',
                 outline: true,
                 width: context.width * .9,
-                onPressed: () {},
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title:
+                          const Text('Deseja realmente excluir a figurinha?'),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              widget.presenter.deleteSticker();
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Sim')),
+                        TextButton(
+                            onPressed: Navigator.of(context).pop,
+                            child: const Text('Não!'))
+                      ],
+                    );
+                  },
+                ),
               )
             ],
           ),
