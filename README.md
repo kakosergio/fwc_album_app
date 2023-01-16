@@ -1,16 +1,15 @@
-# fwc_album_app
+# Fifa World Cup 2022 Stickers Manager
 
-A new Flutter project.
+Projeto ministrado pelo professor Rodrigo Rahman da Academia do Flutter, consistindo em um aplicativo de gerenciamento das figurinhas da Copa do Mundo Qatar 2022.
 
-## Getting Started
+## Tecnologias utilizadas
 
-This project is a starting point for a Flutter application.
+Foram utilizados:
+- Get_it como gerenciador de injeção de dependências;
+- setState como gerenciador de estados
 
-A few resources to get you started if this is your first Flutter project:
+O acesso ao banco de dados é realizado por uma API em PHP, sendo utilizado o pacote DIO para realização das requisições HTTP e recebimento das respostas enviadas pela API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contributors
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Sérgio R. R. Teixeira (@kakosergio)
