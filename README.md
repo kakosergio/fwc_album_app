@@ -4,13 +4,13 @@ Manage your Qatar 2022 World Cup sticker collection in a simple and efficient wa
 
 ## 📋 Topics
 
-- [About](#about)
-- [Preview](#preview)
-- [Functionalities](#functionalities)
-- [Challenges and Learnings along the way](#challenges-and-learnings-along-the-way)
-- [How to Use](#how-to-use)
-- [How to Contribute](#how-to-contribute)
-- [License](#license)
+- [📖 About](#-about)
+- [📱 Preview](#-preview)
+- [🛠️ Functionalities](#%EF%B8%8F-functionalities)
+- [🤯 Challenges and Learnings along the way](#-challenges-and-learnings-along-the-way)
+- [🤔 How to Use](#-how-to-use)
+- [💪 How to Contribute](#-how-to-contribute)
+- [📝 License](#-license)
 
 ## 📖 About
 
